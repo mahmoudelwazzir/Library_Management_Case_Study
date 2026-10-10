@@ -12,6 +12,7 @@ namespace Library_Management_Case_Study.Data
         public DbSet<Member> members { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Borrowing> borrowings { get; set; }
+        public DbSet<Userss> users { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -20,6 +21,7 @@ namespace Library_Management_Case_Study.Data
             modelBuilder.Entity<Category>().HasIndex(c => c.Name).IsUnique();
             modelBuilder.Entity<Book>().HasIndex(b => b.ISBN).IsUnique();
             modelBuilder.Entity<Member>().HasIndex(m => m.Email).IsUnique();
+            modelBuilder.Entity<Userss>().HasIndex(e => e.UserName).IsUnique();
 
 
             modelBuilder.Entity<Book>()
@@ -59,6 +61,11 @@ namespace Library_Management_Case_Study.Data
             modelBuilder.Entity<Borrowing>().HasData(
                 new Borrowing { Id = 1, MemberId = 1, BookId = 2, BorrowDate = new DateTime(2026, 09, 20), ReturnDate = new DateTime(2026, 09, 25) },
                 new Borrowing { Id = 2, MemberId = 2, BookId = 1, BorrowDate = new DateTime(2026, 09, 22), ReturnDate = null }
+            );
+
+            modelBuilder.Entity<Userss>().HasData(
+                new Userss { Id = 1, UserName = "admin", PasswordHash = "admin123", Role = "Admin" },
+                new Userss { Id = 2, UserName = "user", PasswordHash = "user123", Role = "User" }
             );
 
         }

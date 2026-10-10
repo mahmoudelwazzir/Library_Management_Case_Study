@@ -8,7 +8,10 @@ namespace Library_Management_Case_Study.Repo.Implementaion
     {
         private readonly AppDbContext _context;
 
-        public UnitOfWork(AppDbContext context, IGenaricRepo<Member> members, IBookRepo books, ICategoryRepo categories, IGenaricRepo<Borrowing> borrowings)
+        public UnitOfWork(AppDbContext context, IGenaricRepo<Member> members
+            , IBookRepo books
+            , ICategoryRepo categories
+            , IGenaricRepo<Borrowing> borrowings)
         {
             _context = context;
             Members = members;

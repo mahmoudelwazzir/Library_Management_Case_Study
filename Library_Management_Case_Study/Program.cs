@@ -25,6 +25,11 @@ namespace Library_Management_Case_Study
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
             builder.Services.AddScoped<IBookRepo, BookRepo>();
             builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
+            builder.Services.AddScoped<IAuthRepo, AuthRepo>();
+
+
+
+
 
             var app = builder.Build();
 
@@ -37,6 +42,7 @@ namespace Library_Management_Case_Study
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

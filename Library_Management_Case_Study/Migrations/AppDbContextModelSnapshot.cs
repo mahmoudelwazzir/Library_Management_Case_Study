@@ -212,6 +212,50 @@ namespace Library_Management_Case_Study.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Library_Management_Case_Study.Models.Userss", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
+
+                    b.ToTable("users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PasswordHash = "admin123",
+                            Role = "Admin",
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            PasswordHash = "user123",
+                            Role = "User",
+                            UserName = "user"
+                        });
+                });
+
             modelBuilder.Entity("Library_Management_Case_Study.Models.Book", b =>
                 {
                     b.HasOne("Library_Management_Case_Study.Models.Category", "category")
