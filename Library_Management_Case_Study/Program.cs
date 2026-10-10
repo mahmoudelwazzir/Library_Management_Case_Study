@@ -26,6 +26,8 @@ namespace Library_Management_Case_Study
             builder.Services.AddScoped<IBookRepo, BookRepo>();
             builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
             builder.Services.AddScoped<IAuthRepo, AuthRepo>();
+            builder.Services.AddScoped<IMemberRepo, MemberRepo>();
+            builder.Services.AddScoped<IBorrowingRepo, BorrowingRepo>();
 
 
 

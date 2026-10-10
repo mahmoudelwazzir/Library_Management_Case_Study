@@ -8,22 +8,19 @@ namespace Library_Management_Case_Study.Repo.Implementaion
     {
         private readonly AppDbContext _context;
 
-        public UnitOfWork(AppDbContext context, IGenaricRepo<Member> members
-            , IBookRepo books
-            , ICategoryRepo categories
-            , IGenaricRepo<Borrowing> borrowings)
+        public UnitOfWork(AppDbContext context, IMemberRepo memberRepo, IBookRepo books, ICategoryRepo categories, IBorrowingRepo borrowings)
         {
             _context = context;
-            Members = members;
+            MemberRepo = memberRepo;
             Books = books;
             Categories = categories;
             Borrowings = borrowings;
         }
 
-        public IGenaricRepo<Member> Members { get; }
+        public IMemberRepo MemberRepo { get; }
         public IBookRepo Books { get; }
         public ICategoryRepo Categories { get; }
-        public IGenaricRepo<Borrowing> Borrowings { get; }
+        public IBorrowingRepo Borrowings { get; }
 
         public void save()
         {

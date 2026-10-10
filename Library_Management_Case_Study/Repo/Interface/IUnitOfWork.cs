@@ -4,10 +4,10 @@ namespace Library_Management_Case_Study.Repo.Interface
 {
     public interface IUnitOfWork
     {
-        public IGenaricRepo<Member> Members { get; }
+        public IMemberRepo MemberRepo { get; }
         public IBookRepo Books { get; }
         public ICategoryRepo Categories { get; }
-        public IGenaricRepo<Borrowing> Borrowings { get; }
+        public IBorrowingRepo Borrowings { get; }
         void save();
     }
 }

@@ -26,9 +26,23 @@ namespace Library_Management_Case_Study.Controllers
                 return BadRequest();
             }
             var membersdto = _mapper.Map<Member>(memberDTO);
-            _unitOfWork.Members.AddItem(membersdto);
+            _unitOfWork.MemberRepo.AddItem(membersdto);
             _unitOfWork.save();
             return Created();
+        }
+
+        [HttpGet("TopFive")]
+        public IActionResult GetTopFive()
+        {
+            var member = _unitOfWork.MemberRepo.Gettopfivemember();
+            return Ok(member);
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var member = _unitOfWork.MemberRepo.GetMemberById(id);
+            if(member == null) { return NotFound(); }
+            return Ok(member);
         }
     }
 }
